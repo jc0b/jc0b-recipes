@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of the Apparency application.</string>
 	<key>Identifier</key>
-	<string>com.github.jc0b.recipes.download.Apparency</string>
+	<string>com.github.jc0b.download.Apparency</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Apparency and creates a pkg.</string>
+	<string>Downloads the latest version of Apparency and creates a pkg from the dmg.</string>
 	<key>Identifier</key>
-	<string>com.github.jc0b.recipes.pkg.Apparency</string>
+	<string>com.github.jc0b.pkg.Apparency</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -14,7 +14,7 @@
 	<key>MinimumVersion</key>
 	<string>0.3.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.jc0b.recipes.download.Apparency</string>
+	<string>com.github.jc0b.download.Apparency</string>
     <key>Process</key>
     <array>
         <dict>
