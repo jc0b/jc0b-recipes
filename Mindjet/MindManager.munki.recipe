@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads latest version of MindManager for macOS and imports into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.jc0b.recipes.MindManager.munki</string>
+	<string>com.github.jc0b.munki.MindManager</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
