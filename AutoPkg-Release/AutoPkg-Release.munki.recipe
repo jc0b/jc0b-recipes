@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
-		<string>MunkiTools</string>
+		<string>munkitools</string>
 		<key>NAME</key>
 		<string>AutoPkg-Release</string>
 		<key>pkginfo</key>
