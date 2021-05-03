@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Identifier</key>
+    <string>com.github.jc0b.munki.nmap</string>
+    <key>Description</key>
+    <string>Imports an nmap installer .pkg into Munki.</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>nmap</string>
+        <key>repo_subdirectory</key>
+        <string>apps/nmap</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>category</key>
+            <string>IT Management Tools</string>
+            <key>display_name</key>
+            <string>%NAME%</string>
+            <key>description</key>
+            <string>Nmap ("Network Mapper") is a free and open source (license) utility for network discovery and security auditing.</string>
+            <key>developer</key>
+            <string>nmap.org</string>
+            <key>minimum_os_version</key>
+            <string>10.11</string>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.3.2</string>
+    <key>ParentRecipe</key>
+    <string>com.github.jc0b.pkg.nmap</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
