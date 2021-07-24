@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Stat/Transfer and extracts the pkg from the dmg.</string>
+	<key>Identifier</key>
+	<string>com.github.jc0b.pkg.StatTransfer</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>StatTransfer</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.2</string>
+	<key>ParentRecipe</key>
+	<string>com.github.jc0b.download.StatTransfer</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source_path</key>
+                <string>%pathname%/*</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/StatTransfer.pkg</string>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>   
+                <key>input_path</key>   
+                <string>%RECIPE_CACHE_DIR%/StatTransfer.pkg</string>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Developer ID Installer: Circle Systems, Inc. (47S5DARVP4)</string>
+                    <string>Developer ID Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
+            </dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+        </dict>
+    </array>
+</dict>
+</plist>

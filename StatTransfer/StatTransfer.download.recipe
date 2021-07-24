@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Stat/Transfer, and extract the installer .pkg from the .dmg.</string>
+	<key>Identifier</key>
+	<string>com.github.jc0b.download.StatTransfer</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Stat/Transfer</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.4</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>stdemo.dmg</string>
+				<key>url</key>
+				<string>https://stattransfer.com/downloads/stdemo.dmg</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+	</array>
+</dict>
+</plist>
