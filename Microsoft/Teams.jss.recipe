@@ -39,7 +39,7 @@
 	<key>MinimumVersion</key>
 	<string>0.4.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.autopkg.download.MSTeams</string>
+	<string>com.github.apettinen.download.MSTeams</string>
 	<key>Process</key>
 	<array>
 		<dict>
