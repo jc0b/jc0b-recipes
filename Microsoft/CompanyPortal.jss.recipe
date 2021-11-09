@@ -26,7 +26,7 @@
 		<key>NAME</key>
 		<string>Company Portal</string>
 		<key>OS_REQUIREMENTS</key>
-		<string>11.x,10.15.x</string>
+		<string>12.x,11.x,10.15.x</string>
 		<key>POLICY_CATEGORY</key>
 		<string>Testing</string>
 		<key>POLICY_TEMPLATE</key>
