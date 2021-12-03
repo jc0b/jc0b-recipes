@@ -3,22 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Microsoft Edge pkg,
+	<string>Downloads the latest SfB pkg,
 		and appends the version to the end of the filename.
-		Then, uploads to the JSS.
-	</string>
+		Then, uploads to the JSS.</string>
 	<key>Identifier</key>
-	<string>com.github.jc0b.jss.MicrosoftEdge</string>
+	<string>com.github.jc0b.jss.SkypeForBusiness</string>
 	<key>Input</key>
 	<dict>
 		<key>CATEGORY</key>
 		<string>Productivity</string>
 		<key>GROUP_NAME</key>
-		<string>Edge-update-smart</string>
+		<string>SkypeForBusiness-update-smart</string>
 		<key>GROUP_TEMPLATE</key>
 		<string>SmartGroupTemplate.xml</string>
 		<key>NAME</key>
-		<string>Microsoft Edge</string>
+		<string>Skype for Business</string>
 		<key>OS_REQUIREMENTS</key>
 		<string>12.x,11.x,10.15.x</string>
 		<key>POLICY_CATEGORY</key>
@@ -26,14 +25,14 @@
 		<key>POLICY_TEMPLATE</key>
 		<string>PolicyTemplate.xml</string>
 		<key>SELF_SERVICE_DESCRIPTION</key>
-		<string>Microsoft Edge was designed to feel at home on a Mac. Easily sync your passwords, favorites, and settings across many devices.</string>
+		<string>Skype for Business is a program that runs on your Mac and allows you to make and receive calls, chat and videoconference with your colleagues.</string>
 		<key>SELF_SERVICE_ICON</key>
-		<string>Edge.png</string>
+		<string>SkypeForBusiness.png</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.rtrouton.pkg.microsoftedge</string>
+	<string>com.github.rtrouton.pkg.microsoftword365</string>
 	<key>Process</key>
 	<array>
 		<dict>

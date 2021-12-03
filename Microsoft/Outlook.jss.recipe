@@ -5,13 +5,6 @@
 	<key>Description</key>
 	<string>Downloads the latest Outlook 2019 multilingual update pkg,
 		and appends the version to the end of the filename.
-
-		LOCALE_ID sets the locale for a descriptive text that will be
-		extracted from the Microsoft update metadata. See
-		https://msdn.microsoft.com/en-us/goglobal/bb964664.aspx
-		for more information about locale IDs.
-
-		VERSION currently only supports 'latest'.
 		Then, uploads to the JSS.</string>
 	<key>Identifier</key>
 	<string>com.github.jc0b.jss.MicrosoftOutlook</string>
