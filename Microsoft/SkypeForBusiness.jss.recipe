@@ -32,7 +32,7 @@
 	<key>MinimumVersion</key>
 	<string>0.4.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.rtrouton.pkg.microsoftword365</string>
+	<string>com.github.rtrouton.pkg.skypeforbusiness365</string>
 	<key>Process</key>
 	<array>
 		<dict>
