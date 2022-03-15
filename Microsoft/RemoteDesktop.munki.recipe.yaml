@@ -1,0 +1,25 @@
+Identifier: com.github.jc0b.munki.MicrosoftRemoteDesktop
+Description: Downloads the latest verison of Microsoft Remote Desktop and imports it into Munki.
+MinimumVersion: "2.3"
+ParentRecipe: com.github.rtrouton.pkg.microsoftremotedesktop
+
+
+Input:
+  MUNKI_REPO_SUBDIR: microsoft/remotedesktop
+  NAME: MSRemoteDesktop
+  pkginfo:
+    catalogs: 
+      - testing
+    category: System Administration
+    description: Use the Microsoft Remote Desktop app to connect to a remote PC or virtual apps and desktops made available by your admin. The app helps you be productive no matter where you are.
+    developer: Microsoft
+    display_name: Microsoft Remote Desktop
+    minimum_os_version: "10.15"
+    name: "%NAME%"
+    unattended_install: True
+
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: "%pathname%"
+      repo_subdirectory: "%MUNKI_REPO_SUBDIR%" 
