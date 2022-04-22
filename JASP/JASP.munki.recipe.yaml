@@ -1,0 +1,28 @@
+Identifier: com.github.jc0b.munki.JASP
+ParentRecipe: com.github.jc0b.download.JASP
+Description: "Imports the latest version of JASP into Munki."
+MinimumVersion: "2.3"
+
+Input:
+  MUNKI_REPO_SUBDIR: "apps/%NAME%"
+  NAME: "JASP"
+  pkginfo:
+    catalogs:
+      - testing
+    category: Scientific Software
+    description: Visual resport designer for JasperReports.
+    developer: jasp-stats
+    display_name: "%NAME%"
+    name: "%NAME%"
+    minimum_os_version: 10.15
+    unattended_install: True
+
+Process:
+  - Processor: AppDmgVersioner
+    Arguments:
+      dmg_path: "%pathname%"
+
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: "%pathname%"
+      repo_subdirectory: "%MUNKI_REPO_SUBDIR%"
