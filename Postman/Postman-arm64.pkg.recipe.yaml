@@ -1,0 +1,13 @@
+Description: Downloads the current release version of Postman for Apple Silicon and builds a distinctly-named package. Taken from psaintemarie-recipes repo
+Identifier: com.github.jc0b.pkg.arm64.Postman
+MinimumVersion: "2.3"
+ParentRecipe: com.github.psaintemarie.download.postman-arm64
+
+Input:
+  NAME: Postman-arm64
+
+Process:
+- Processor: AppPkgCreator
+  Arguments:
+    app_path: "%RECIPE_CACHE_DIR%/%NAME%/Postman.app"
+    pkg_path: "%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg"
