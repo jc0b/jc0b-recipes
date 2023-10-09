@@ -1,3 +1,4 @@
+Description: Packages both the Intel and Apple Silicon versions of Joan Configurator into a Universal installer.
 Identifier: com.github.jc0b.pkg.JoanConfigurator
 ParentRecipe: com.github.jc0b.download.JoanConfigurator
 MinimumVersion: '2.3'
