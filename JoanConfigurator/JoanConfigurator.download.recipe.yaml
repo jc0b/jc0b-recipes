@@ -4,34 +4,23 @@ MinimumVersion: '2.3'
 
 Input:
   NAME: JoanConfigurator
-  SEARCH_URL: "https://support.getjoan.com/knowledge/download-joan-configurator-for-desktop-1"
+  ARM_URL: "https://configurator.getjoan.com/download/flavor/joan/latest/osx_arm64"
+  INTEL_URL: "https://configurator.getjoan.com/download/flavor/joan/latest/osx_64"
 
 Process:
-  - Processor: URLTextSearcher
-    Arguments:
-      re_flags:
-        - IGNORECASE
-      re_pattern: 'href="(https://files.joanassistant.com/JoanConfigurator2.0/.*arm64-mac.dmg)"'
-      url: '%SEARCH_URL%'
 
   - Processor: URLDownloader
     Arguments:
       filename: '%NAME%-arm64.dmg'
       download_dir: '%RECIPE_CACHE_DIR%/downloads'
-      url: '%match%'
+      url: '%ARM_URL%'
 
-  - Processor: URLTextSearcher
-    Arguments:
-      re_flags:
-        - IGNORECASE
-      re_pattern: 'href="(https://files.joanassistant.com/JoanConfigurator2.0/.*x64-mac.dmg)"'
-      url: '%SEARCH_URL%'
 
   - Processor: URLDownloader
     Arguments:
       filename: '%NAME%-x86_64.dmg'
       download_dir: '%RECIPE_CACHE_DIR%/downloads'
-      url: '%match%'
+      url: '%INTEL_URL%'
 
   - Processor: EndOfCheckPhase
 
