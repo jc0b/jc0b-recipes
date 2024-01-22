@@ -1,0 +1,58 @@
+Description: Downloads the latest versions of Terraform (arm and intel) and unzips them.
+Identifier: com.github.jc0b.download.Terraform
+MinimumVersion: '2.3'
+
+Input:
+  NAME: Terraform
+  PRODUCT: terraform
+
+Process:
+  - Processor: io.github.hjuutilainen.SharedProcessors/HashiCorpURLProvider
+    Arguments:
+      arch: arm64
+      project_name: "%PRODUCT%"
+
+  - Processor: URLDownloader
+    Arguments:
+      filename: '%PRODUCT%-arm64.zip'
+      download_dir: '%RECIPE_CACHE_DIR%/downloads'
+
+  - Processor: EndOfCheckPhase
+
+  - Processor: Unarchiver
+    Arguments:
+      archive_path: "%pathname%"
+      destination_path: "%RECIPE_CACHE_DIR%/downloads/%PRODUCT%-arm64"
+      purge_destination: true
+
+  - Processor: io.github.hjuutilainen.SharedProcessors/HashiCorpURLProvider
+    Arguments:
+      arch: amd64
+      project_name: "%PRODUCT%"
+
+  - Processor: URLDownloader
+    Arguments:
+      filename: '%PRODUCT%-amd64.zip'
+      download_dir: '%RECIPE_CACHE_DIR%/downloads'
+
+  - Processor: EndOfCheckPhase
+
+  - Processor: Unarchiver
+    Arguments:
+      archive_path: "%pathname%"
+      destination_path: "%RECIPE_CACHE_DIR%/downloads/%PRODUCT%-amd64"
+      purge_destination: true
+
+  - Processor: CodeSignatureVerifier
+    Arguments:
+      input_path: '%RECIPE_CACHE_DIR%/downloads/%PRODUCT%-arm64/terraform'
+      requirement: identifier terraform and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = D38WU7D763
+      deep_verification: True
+      strict_verification: True
+
+  - Processor: CodeSignatureVerifier
+    Arguments:
+      input_path: '%RECIPE_CACHE_DIR%/downloads/%PRODUCT%-amd64/terraform'
+      requirement: identifier terraform and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = D38WU7D763
+      deep_verification: True
+      strict_verification: True

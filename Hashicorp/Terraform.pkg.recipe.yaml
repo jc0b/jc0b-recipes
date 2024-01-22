@@ -1,0 +1,107 @@
+Description: Downloads the latest versions of Terraform (arm and intel) and creates a universal package.
+Identifier: com.github.jc0b.pkg.Terraform
+ParentRecipe: com.github.jc0b.download.Terraform
+MinimumVersion: '2.3'
+
+Input:
+  NAME: Terraform
+  PRODUCT: terraform
+
+Process:
+  - Processor: PkgRootCreator
+    Arguments:
+      pkgroot: '%RECIPE_CACHE_DIR%/Universal'
+      pkgdirs:
+        pkgroot: '0775'
+        Scripts: '0775'
+
+  - Processor: PkgRootCreator
+    Arguments:
+      pkgdirs:
+        usr: '0775'
+        usr/local: '0775'
+        usr/local/bin: '0775'
+      pkgroot: '%RECIPE_CACHE_DIR%/payload'
+
+  - Processor: Copier
+    Arguments:
+      source_path: '%RECIPE_CACHE_DIR%/downloads/%PRODUCT%-arm64/terraform'
+      destination_path: '%pkgroot%/usr/local/bin/terraform'
+      overwrite: True
+
+  - Processor: PkgCreator
+    Arguments:
+      pkg_request:
+        chown:
+          - group: admin
+            path: usr/local/bin
+            user: root
+        id: 'com.hashicorp.terraform-arm64'
+        options: purge_ds_store
+        pkgdir: '%RECIPE_CACHE_DIR%'
+        pkgname: '%NAME%-arm64-%version%'
+
+  - Processor: FileMover
+    Arguments:
+      source: '%pkg_path%'
+      target: '%RECIPE_CACHE_DIR%/Universal/Scripts/%PRODUCT%-arm64-%version%.pkg'
+
+  - Processor: Copier
+    Arguments:
+      source_path: '%RECIPE_CACHE_DIR%/downloads/%PRODUCT%-amd64/terraform'
+      destination_path: '%pkgroot%/usr/local/bin/terraform'
+      overwrite: True
+
+  - Processor: PkgCreator
+    Arguments:
+      pkg_request:
+        chown:
+          - group: admin
+            path: usr/local/bin
+            user: root
+        id: 'com.hashicorp.terraform-amd64'
+        options: purge_ds_store
+        pkgdir: '%RECIPE_CACHE_DIR%'
+        pkgname: '%NAME%-amd64-%version%'
+
+  - Processor: FileMover
+    Arguments:
+      source: '%pkg_path%'
+      target: '%RECIPE_CACHE_DIR%/Universal/Scripts/%NAME%-amd64-%version%.pkg'
+
+  - Processor: FileCreator
+    Arguments:
+      file_path: '%RECIPE_CACHE_DIR%/Universal/Scripts/preinstall'
+      file_mode: '0755'
+      file_content: |
+        #!/bin/bash
+
+        arm64_package="%NAME%-arm64-%version%.pkg"
+        amd64_package="%NAME%-amd64-%version%.pkg"
+
+        if [[ $( /usr/bin/arch ) = arm64* ]]; then
+          /usr/sbin/installer -pkg "$arm64_package" -target "$3"
+        else
+          /usr/sbin/installer -pkg "$amd64_package" -target "$3"
+        fi
+
+        exit 0
+
+  - Processor: PkgCreator
+    Arguments:
+      pkg_request:
+        id: 'com.hashicorp.terraform'
+        version: '%version%'
+        options: purge_ds_store
+        pkgname: '%NAME%-Universal-%version%'
+        pkgdir: '%RECIPE_CACHE_DIR%'
+        scripts: '%RECIPE_CACHE_DIR%/Universal/Scripts'
+        pkgroot: '%RECIPE_CACHE_DIR%/Universal/pkgroot'
+
+  - Processor: com.github.smithjw.processors/FriendlyPathDeleter
+    Arguments:
+      fail_deleter_silently: True
+      path_list:
+        - '%RECIPE_CACHE_DIR%/Universal'
+        - '%RECIPE_CACHE_DIR%/unpack'
+        - '%RECIPE_CACHE_DIR%/payload'
