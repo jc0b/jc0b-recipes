@@ -1,5 +1,5 @@
 Description: Downloads the latest versions of Terraform (arm and intel) and unzips them.
-Identifier: com.github.jc0b.download.Terraform
+Identifier: com.github.jc0b.download.TerraformUniversal
 MinimumVersion: '2.3'
 
 Input:
