@@ -1,0 +1,33 @@
+Identifier: com.github.jc0b.munki.Camtasia
+Description: >
+  Downloads the Camtasia DMG from the TechSmith web site,
+  and imports into Munki repository. It is assumed that 
+  the newest version is the only version on the web page 
+  for the application.
+MinimumVersion: "2.3"
+ParentRecipe: com.github.jps3.download.Camtasia
+
+Input:
+  NAME: "Camtasia"
+  DISPLAY_NAME: "%NAME%"
+  MUNKI_REPO_SUBDIR: "apps/Camtasia"
+  pkginfo:
+    catalogs:
+      - testing
+    description: >
+      A powerful, yet easy-to-use screen recorder, Camtasia
+      helps you create professional videos without having to
+      be a video pro. Easily record your screen movements
+      and actions, or import HD video from a camera or other
+      source. Customize and edit content on both Mac and
+      Windows platforms, and share your videos with viewers
+      on nearly any device.
+    display_name: "%DISPLAY_NAME%"
+    name: "%NAME%"
+
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: "%pathname%"
+      version_comparison_key: "CFBundleVersion"
+      repo_subdirectory: "%MUNKI_REPO_SUBDIR%"
