@@ -31,7 +31,7 @@
     <key>MinimumVersion</key>
     <string>0.4.1</string>
     <key>ParentRecipe</key>
-    <string>com.github.jc0b.download.Camtasia</string>
+    <string>com.github.jps3.download.Camtasia</string>
     <key>Process</key>
     <array>
         <dict>
